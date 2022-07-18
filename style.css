@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+    font-weight: bold;
+}
+/* osnovni layout */
+.page{
+    clear: both;
+    background-color: #F9F9F8;
+    width: 80%;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+.container{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.row{
+    margin: 0;
+    padding: 0;
+}
+.container-fluid {
+    width: 100%;
+    padding: 0;
+}
+
+header{
+    background-color: #003A5A;
+}
+
+header img{
+    width: 150px;
+    padding: 2% 0 2% 3%;
+    text-align: center;
+    display: block;
+}
+
+#nav{
+    background-color: #064b71;
+}
+
+a {
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+a:hover{
+    color: #dd974c;
+    text-decoration: none;
+}
+
+#home{
+    border-bottom: 4px solid #dd974c;
+}
+
+h1{
+    width: inherit;
+    height: 50px;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    padding: 2%;
+}
+.main-page-section > h2{
+    padding: 3% 0 0 3%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h3{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 3% 0;
+}
+
+.main-page-section{
+    display: block;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.main-page-article{
+    width: 100%;
+    float: left;
+    margin: 10px auto;
+    text-align: left;
+    border-bottom: 1px solid #cccbcb;
+}
+
+.main-page-article img{
+    width: 100%;
+}
+.main-page-article p{
+    color:  #696969;
+    font-weight: normal;
+    font-size: 15px;
+    text-transform: initial;
+}
+
+.date{
+    padding: 5% 0;
+}
+
+/* clanak.html */
+
+.article-section h1{
+    display: block;
+    margin-bottom: 20px;
+}
+
+.article{
+    width: 80%;
+    padding: 20px 50px;
+    margin: 0 auto;
+}
+
+.article h2{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2% 0;
+}
+
+.article img{
+    width: 120%;
+    margin: 20px 0 20px -10%;
+}
+
+.article > p{
+    color:  #696969;
+    font-weight: normal;
+    padding-bottom: 2%;
+}
+
+/* unos.html */
+
+form{
+    width: 80%;
+    margin: 5% auto;
+}
+
+form > input, select, textarea{
+    margin-bottom: 3%;
+    font-weight: normal;
+}
+#submit-button{
+    padding: 1% 4%;
+    font-size: 20px;
+}
+footer{
+    background-color: #003A5A;
+    clear: both;
+    text-align: center;
+    position: relative;
+    z-index: 1; 
+    height: -3em;
+    margin-top: 15em;
+}
+
+footer img{
+    width: 150px;
+    padding: 2%;
+}
+
+#clanak{
+    width: 80%;
+    margin: 50px auto;
+}
+
+#login-footer{
+    margin-top: 30em;
+}

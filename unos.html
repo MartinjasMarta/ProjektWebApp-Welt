@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title>Welt - Unos vijesti</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <main class="page">
+
+            <header>
+                <div class="container-fluid">
+                    <div class="row" id="header-logo">
+                        <div class="col-sm-12 col-md-12">
+                            <a href="index.php"><img src="images/welt-logo.png" alt="Welt logo"/></a>
+                        </div>
+                    </div>
+                    <div class="row" id="nav">
+                        <div class="col-sm-12 col-md-1" id="home">
+                            <a href="index.php">Home</a>
+                        </div>
+                        <div class="col-sm-12 col-md-1">
+                            <a href="kategorija.php?id=beruf">Beruf</a>
+                        </div>
+                        <div class="col-sm-12 col-md-1">
+                            <a href="kategorija.php?id=food">Food</a>
+                        </div>
+                        <div class="col-sm-12 col-md-1">
+                            <a href="kategorija.php?id=sport">Sport</a>
+                        </div>
+                        <div class="col-sm-12 col-md-1">
+                            <a href="unos.html">Unos</a>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <a href="administracija.php">Login i Administracija</a>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <a href="registracija.php">Registracija</a>
+                        </div>
+                        <div class="col-sm-12 col-md-1">
+                            <a href="logout.php">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section>
+
+                <h1>Unos vijesti</h1>
+
+                <form enctype="multipart/form-data" name="vijest" method="POST" action="insert.php">
+
+                    Unesi naslov vijesti:<br/><br/>
+                    <input type="text" id="naslov" name="naslov"/><br/>
+                    <span id="porukaTitle" style="color:red;"></span><br/>
+
+                    Unesi kratki sazetak:<br/><br/>
+                    <textarea rows="4" cols="50" id="sazetak" name="sazetak"></textarea><br/>
+                    <span id="porukaAbout" style="color:red;"></span><br/>
+
+                    Unesi tekst vijesti:<br/><br/>
+                    <textarea rows="10" cols="50" id="tekst" name="tekst"></textarea><br/>
+                    <span id="porukaContent" style="color:red;"></span><br/>
+
+                    Odaberi kategoriju:<br/><br/>
+                    <select id="kategorija" name="kategorija">
+                        <option>Odaberi kategoriju</option>
+                        <option value="sport" name="sport">Sport</option>
+                        <option value="food" name="hrana">Food</option>
+                        <option value="beruf" name="posao">Beruf & Karriere</option>
+                    </select><br/>
+                    <span id="porukaKategorija" style="color:red;"></span><br/>
+
+                    Odaberi sliku:<br/><br/>
+                    <input type="file" id="slika" name="slika" width=100px><br/>
+                    <span id="porukaSlika" style="color:red;"></span><br/>
+
+                    Spremiti u arhivu?<br/><br/>
+                    <input type="checkbox" name="arhiva"/> Da<br/>
+                    
+                    <button type="reset" id="reset" name = "reset">Poništi</button>
+                    <button type="submit" id="submit" name = "submit">Prihvati</button>
+
+                </form>
+
+                <script type="text/javascript"> 
+
+                    document.getElementById("submit").onclick = function(event) { 
+    
+                        var slanjeForme = true; 
+    
+                        //provjera naslova
+                        var poljeTitle = document.getElementById("naslov"); 
+                        var title = document.getElementById("naslov").value; 
+                        if (title.length < 5 || title.length > 30) { 
+                            slanjeForme = false; 
+                            poljeTitle.style.border="1px dashed red"; 
+                            document.getElementById("porukaTitle").innerHTML="Naslov vijesti mora imati između 5 i 30 znakova!<br>"; 
+                        } else { 
+                            poljeTitle.style.border="1px solid green"; 
+                            document.getElementById("porukaTitle").innerHTML=""; 
+                        }
+    
+                        //provjera sazetka
+                        var poljeAbout = document.getElementById("sazetak"); 
+                        var about = document.getElementById("sazetak").value; 
+                        if (about.length < 10 || about.length > 100) { 
+                            slanjeForme = false; 
+                            poljeAbout.style.border="1px dashed red"; 
+                            document.getElementById("porukaAbout").innerHTML="Kratki sadržaj mora imati između 10 i 100 znakova!<br>"; 
+                        } else { 
+                            poljeAbout.style.border="1px solid green"; 
+                            document.getElementById("porukaAbout").innerHTML=""; 
+                        } 
+                        
+                        // provjera teksta clanka
+                        var poljeContent = document.getElementById("tekst"); 
+                        var content = document.getElementById("tekst").value; 
+                        if (content.length == 0) { 
+                            slanjeForme = false; 
+                            poljeContent.style.border="1px dashed red"; 
+                            document.getElementById("porukaContent").innerHTML="Tekst članka mora biti unesen!<br>"; 
+                        } else { poljeContent.style.border="1px solid green";
+                        document.getElementById("porukaContent").innerHTML=""; 
+                        } 
+                        
+                        // provjera slike 
+                        var poljeSlika = document.getElementById("slika"); 
+                        var pphoto = document.getElementById("slika").value; 
+                        if (pphoto.length == 0) { 
+                            slanjeForme = false; 
+                            poljeSlika.style.border="1px dashed red"; 
+                            document.getElementById("porukaSlika").innerHTML="Slika mora biti unesena!<br>"; 
+                        } else { 
+                            poljeSlika.style.border="1px solid green"; 
+                            document.getElementById("porukaSlika").innerHTML=""; 
+                        } 
+                        
+                        // provjera kategorije
+                        var poljeCategory = document.getElementById("kategorija"); 
+                        if(document.getElementById("kategorija").selectedIndex == 0) { 
+                            slanjeForme = false; 
+                            poljeCategory.style.border="1px dashed red"; 
+                            document.getElementById("porukaKategorija").innerHTML="Kategorija mora biti odabrana!<br>"; 
+                        } else { 
+                            poljeCategory.style.border="1px solid green"; 
+                            document.getElementById("porukaKategorija").innerHTML=""; 
+                        } 
+                            
+                        if (slanjeForme != true) { 
+                            event.preventDefault(); 
+                        } 
+                    }; 
+                    
+                </script>
+
+            </section>
+
+            
+
+            <footer>
+                <div class="container-fluid">
+                    <div class="row" id="footer-logo">
+                        <div class="col-sm-12 col-md-12">
+                            <img src="images/welt-logo.png" alt="Welt logo"/>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>
